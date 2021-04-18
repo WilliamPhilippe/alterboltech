@@ -54,7 +54,7 @@ class TaskController {
     const taskService = new TaskServices();
 
     try {
-      const tasks = await taskService.listTasks(request.body.projectId);
+      const tasks = await taskService.listTasks(request.params.projectId);
 
       return response.status(200).json({ message: "Tasks!", tasks });
     } catch (err) {

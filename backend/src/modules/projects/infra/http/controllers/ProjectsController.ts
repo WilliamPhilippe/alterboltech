@@ -61,11 +61,11 @@ class ProjectController {
   async deleteProject(request: Request, response: Response): Promise<Response> {
     const projectService = new ProjectServices();
     try {
-      await projectService.deleteProject(request.body.id);
+      await projectService.deleteProject(request.params.projectId);
 
       return response
         .status(200)
-        .json({ message: `Project ${request.body.id} deleted.` });
+        .json({ message: `Project ${request.params.projectId} deleted.` });
     } catch (err) {
       return response
         .status(err.status)

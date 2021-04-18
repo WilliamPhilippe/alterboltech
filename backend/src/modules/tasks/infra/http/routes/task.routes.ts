@@ -8,7 +8,7 @@ const taskController = new TaskController();
 
 routes.post("/", taskController.createTask);
 routes.put("/", taskController.markTaskAsChecked);
-routes.get("/", taskController.listTasks);
+routes.get("/:projectId", taskController.listTasks);
 routes.delete("/", taskController.deleteTask);
 
 export default routes;
