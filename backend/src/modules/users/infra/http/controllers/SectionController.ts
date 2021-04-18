@@ -24,4 +24,4 @@ class SectionController {
   }
 }
 
-export default new SectionController();
+export default SectionController;

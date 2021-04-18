@@ -5,7 +5,10 @@ import UsersController from "../controllers/UsersController";
 
 const routes = Router();
 
-routes.post("/", UsersController.createUser);
-routes.post("/login", SectionController.login);
+const usersController = new UsersController();
+const sectionController = new SectionController();
+
+routes.post("/", usersController.createUser);
+routes.post("/login", sectionController.login);
 
 export default routes;

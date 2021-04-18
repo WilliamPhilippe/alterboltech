@@ -8,9 +8,7 @@ class UserService {
     this.userRepository = new UserRepository();
   }
 
-  public async createUser(
-    data: IUserInterfaceDTO
-  ): Promise<IUserInterfaceDTO | string> {
+  public async createUser(data: IUserInterfaceDTO): Promise<IUserInterfaceDTO> {
     if (!(data.name && data.password && data.username)) {
       const err = new Error("Name, username and password are required");
       Object.assign(err, { status: 400 });

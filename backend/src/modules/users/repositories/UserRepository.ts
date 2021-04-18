@@ -1,9 +1,7 @@
 import User, { IUserInterfaceDTO } from "../infra/schema/User";
 
 class UserRepository {
-  public async createUser(
-    data: IUserInterfaceDTO
-  ): Promise<IUserInterfaceDTO | string> {
+  public async createUser(data: IUserInterfaceDTO): Promise<IUserInterfaceDTO> {
     try {
       const newUser = await User.create(data);
       return newUser;
