@@ -1,6 +1,7 @@
 ## ToDo List API and Front-end
 
 ### Requiments to run this project:
+- Software developed on a Linux system
 - Node.js
 - Yarn or NPM
 
