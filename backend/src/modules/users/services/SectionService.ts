@@ -28,9 +28,17 @@ class SectionService {
       throw err;
     }
 
-    const { _id, password } = await this.userRepository.findOneByUsername(
+    const userFound = await this.userRepository.findOneByUsername(
       user.username
     );
+
+    if (!userFound) {
+      const err = new Error("Invalid credentials");
+      Object.assign(err, { status: 401 });
+      throw err;
+    }
+
+    const { _id, password } = userFound;
 
     if (user.password !== password) {
       const err = new Error("Invalid credentials");

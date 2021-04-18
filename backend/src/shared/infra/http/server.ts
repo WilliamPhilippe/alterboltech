@@ -17,4 +17,4 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(3000, () => console.info("Server is running!"));
+app.listen(3030, () => console.info("Server is running!"));
