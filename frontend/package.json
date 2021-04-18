@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tippyjs/react": "^4.2.5",
     "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.0",
     "prop-types": "^15.7.2",

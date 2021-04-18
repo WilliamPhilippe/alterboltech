@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import {MdDelete, MdModeEdit, MdClose} from 'react-icons/md';
 import Proptypes from 'prop-types'
 
+import Task from '../Task';
 import { Container, Header, TasksContent, Footer } from './styles';
 
 import { listTasks, createTask, updateProject } from './services';
@@ -19,7 +20,6 @@ function Project({name, id, onDelete, onLoadProjects}) {
     setLoading(true);
     try {
       const response = await listTasks(id);
-      console.info(response)
 
       const checkeds = [];
       const unCheckeds = [];
@@ -51,7 +51,7 @@ function Project({name, id, onDelete, onLoadProjects}) {
       setLoading(false);
     }
     
-  }, [])
+  }, [id])
 
   const [showUpdate, setShowUpdate] = useState(false);
   const [newName, setNewName] = useState(name);
@@ -102,21 +102,21 @@ function Project({name, id, onDelete, onLoadProjects}) {
             {loading && <Loading/>}
             <h3>To Do</h3>
             <ul>
-                {tasks.map(item => <li>{item.description}</li>)}
+                {tasks.map(item => <Task key={item.id} item={item} onLoadTasks={loadTasks} />)}
             </ul>
             <h3>Done</h3>
             <ul>
-                {tasksChecked.map(item => <li>{item.description}</li>)}
+                {tasksChecked.map(item => <Task key={item.id} item={item} onLoadTasks={loadTasks} />)}
             </ul>
         </TasksContent>
         <Footer>
             <input 
-                placeholder="nova tarefa"
+                placeholder="New task"
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
             />
             <button onClick={() => onCreateTask(newTask)}>
-                criar
+                save
             </button>
         </Footer>    
     </Container>

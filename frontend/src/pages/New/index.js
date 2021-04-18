@@ -6,9 +6,9 @@ import { Content, FormContent } from './styles';
 
 import Loading from '../../components/Loading';
 
-import { sendLogin } from './services';
+import { createUser } from './services';
 
-function Login({ history }) {
+function New({ history }) {
 
   const { register, handleSubmit } = useForm();
 
@@ -17,11 +17,15 @@ function Login({ history }) {
   const [loading, setLoading] = useState(false);
 
   async function onSubmit(data) {
+    if(!data.username || !data.name || !data.password){
+      return setErrorMessage('All fields are required.')
+    }
+    
     setLoading(true);
     setErrorMessage('')
     try {
-      await sendLogin(data);
-      history.push('/');
+      await createUser(data);
+      history.push('/login');
     } catch (err) {
       setErrorMessage(err.response.error);
     } finally {
@@ -33,9 +37,16 @@ function Login({ history }) {
     <Content>
       <div className="container">
         <FormContent>
-          <h5>Your ToDo List</h5>
+          <h5>Create your user</h5>
           {loading && <Loading />}
           <form onSubmit={handleSubmit(onSubmit)}>
+
+          <input
+              name="name"
+              ref={register}
+              id="icon_prefix"
+              placeholder="name"
+            />
               
             <input
               name="username"
@@ -62,14 +73,14 @@ function Login({ history }) {
               type="submit"
               name="action"
             >
-              Send
+              Entrar
             </button>
           </form>
-          <Link to="/new">Sign in</Link>
+          <Link to="/login">Login</Link>
         </FormContent>
       </div>
     </Content>
   );
 }
 
-export default Login;
+export default New;

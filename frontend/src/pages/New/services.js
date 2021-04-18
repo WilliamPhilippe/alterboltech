@@ -1,16 +1,19 @@
 import api from '../../services/api';
 import { RequestException } from '../../utils/requestException';
 
-async function getEmpresaById(id) {
-  let response;
+async function createUser({ username, password, name }) {
 
   try {
-    response = await api.get(`enterprises/${id}`);
+    await api.post('/users', {
+      name,
+      password,
+      username
+    });    
+    
   } catch (error) {
     throw new RequestException(error.response.data);
   }
 
-  return response;
 }
 
-export { getEmpresaById };
+export { createUser };

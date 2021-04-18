@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types'
 
-import { Container, TasksContent } from './styles';
-
-import Loading from '../Loading';
+import { Container } from './styles';
 
 function CreateProject({onCreate}) {
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit } = useForm();
 
   function onSubmit({name}) {
     onCreate(name);

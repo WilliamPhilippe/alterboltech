@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { useForm } from 'react-hook-form';
-
 import NavContent from '../../components/NavContainer';
 import Project from "../../components/Project";
 import CreateProject from "../../components/CreateProject";
@@ -71,7 +69,7 @@ function Home({ history }) {
 
   return (
     <Content>
-      <NavContent/>
+      <NavContent history={history}/>
       <Projects>
         <CreateProject onCreate={onCreateProject}/>
 
@@ -85,7 +83,7 @@ function Home({ history }) {
 }
 
 Home.propTypes = {
-  history: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default Home;

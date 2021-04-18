@@ -71,11 +71,11 @@ class TaskController {
     const taskService = new TaskServices();
 
     try {
-      await taskService.deleteTask(request.body.id);
+      await taskService.deleteTask(request.params.id);
 
       return response
         .status(200)
-        .json({ message: `Task ${request.body.id} deleted` });
+        .json({ message: `Task ${request.params.id} deleted` });
     } catch (err) {
       return response
         .status(err.status)

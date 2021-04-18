@@ -10,7 +10,7 @@ async function sendLogin({ username, password }) {
       password,
     });
 
-    const { id, token } = response.data.user;
+    const { token } = response.data.user;
     if (token)
       api.defaults.headers.Authorization = `Bearer ${token}`;
     
